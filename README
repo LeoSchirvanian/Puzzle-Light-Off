@@ -1,0 +1,38 @@
+Puzzle LightsOff :
+
+Ce jeu a été codé en C sous Linux Ubuntu 18.04.
+Ce programme requiert la librairie SDL et SDL_image.
+
+Le Makefile dans le dossier permet de compiler le programme.
+Rendez-vous dans le fichier contenant le code dans le terminal et tapez make pour compiler.
+L'éxécutable se nomme tp2.
+Sous linux, tapez './tp2' pour lancer l'éxécutable.
+Pour nettoyer le dossier, tapez 'make mrproper'.
+
+Il y a deux images nécessaires au bon fonctionnement du jeu :
+L'image "un.bmp" qui représente une case allumée (en rouge) et "zero.bmp" qui représente une case éteinte (en jaune).
+
+Règle du jeu : 
+
+- Première partie : Initialisation
+
+	Les 9 cases de la matrice 3x3 en haut à gauche vont s'allumer une à une.
+	A chaque case allumée, on demande à l'utilisateur de cliquer sur le(s) case(s) qu'il souhaite lui associer.
+	Pour confirmer votre association, tapez Espace.
+	
+	Les associations sont alors stockées dans une matrice 36x36 (matrice association), ou chaque colonne représente une case de la matrice 6x6 et 		les lignes les associations avec cette matrice.
+	Si il y a un 1, il y a une association entre les deux cases, sinon 0.
+	De base la matrice association est la matrice identité de dimension 36 (Chaque case est logiquement associée à elle-même).
+	La matrice association est donc de base inversible.
+
+	ATTENTION ! 
+	Si l'une des associations effectuées par l'utilisateur lors de l'initialisation baisse le rang de la matrice (la rend non inversible 		et donc rend le jeu non resolvable), alors l'association est refusée par le programme et ce dernier demande de réaffilier une nouvelle 		association à la même case.
+
+	Une fois l'association des neufs cases finies, le programme va appliquer ses associations à toute les cases du jeu par symétrie par rotation.
+	De plus, une fois l'association finies, un fichier texte "Matrice Association.txt" apparaît dans le dossier du jeu et contient la matrice 		36x36.
+
+- Deuxième partie : Jeu
+
+	Le but du Jeu est simple : essayer d'allumer toutes les cases (case rouge) en tenant compte des associations que vous avez définies.
+
+
